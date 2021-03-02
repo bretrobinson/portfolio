@@ -1,0 +1,569 @@
+html {
+	scroll-behavior: smooth;
+}
+
+@font-face {
+	font-family: amatic;
+	src: url(../fonts/Amatic_SC/AmaticSC-Regular.ttf);
+}
+
+@font-face {
+	font-family: antic;
+	src: url(../fonts/Antic_Didone/AnticDidone-Regular.ttf);
+}
+
+@font-face {
+	font-family: adr;
+	src: url(../fonts/Architects_Daughter/ArchitectsDaughter-Regular.ttf);
+}
+
+@font-face {
+	font-family: boogaloo;
+	src: url(../fonts/Boogaloo/Boogaloo-Regular.ttf);
+}
+
+@font-face {
+	font-family: caveat;
+	src: url(../fonts/Caveat/Caveat-Regular.ttf);
+}
+
+@font-face {
+	font-family: dancing;
+	src: url(../fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf);
+}
+
+@font-face {
+	font-family: flamenco;
+	src: url(../fonts/Flamenca/Flamenca-Regular.ttf);
+}
+
+@font-face {
+	font-family: handlee;
+	src: url(../fonts/Handlee/Hnadlee-Regular.ttf);
+}
+
+@font-face {
+	font-family: indieFlower;
+	src: url(../fonts/Indie_Flower/IndieFlower-Regular.ttf);
+}
+
+@font-face {
+	font-family: kufam;
+	src: url(../fonts/Kufam/Kufam-VariableFont_wght.ttf);
+}
+
+@font-face {
+	font-family: marvel;
+	src: url(../fonts/Marvel/Marvel-Regular.ttf);
+}
+
+@font-face {
+	font-family: montserrat;
+	src: url(../fonts/Montserrat/Montserrat-Regular.ttf);
+}
+
+body
+{
+  margin: 0px;
+  padding: 0px;
+  
+  /* make it look decent enough */
+  /* background: #232323; */
+  /* background-color: blue;
+  background-image: url(../images/desktop3.jpg); */
+  background: blue url(../images/desktop3.jpg);
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  color: #cdcdcd;
+  /* font-family: "Avenir Next", "Avenir", sans-serif; */
+	/* font-family: 'Caveat', cursive; */
+	/* font-family: 'Architects Daughter', cursive; */
+	/* font-family: 'Dancing Script', cursive; */
+	/* font-family: 'Flamenco', cursive; */
+	/* font-family: 'Indie Flower', cursive; */
+	/* font-family: 'Amatic SC', cursive; */
+	/* font-family: 'Handlee', cursive; */
+	/* font-family: 'Marvel', sans-serif; */
+	/* font-family: 'Antic Didone', serif; */
+  font-family: 'Montserrat', sans-serif;
+  
+}
+
+/*
+ * Made by Erik Terwan
+ * 24th of November 2015
+ * MIT License
+ *
+ *
+ * If you are thinking of using this in
+ * production code, beware of the browser
+ * prefixes.
+ */
+
+#menuToggle
+{
+  display: block;
+  /* position: relative; */
+	position: fixed;
+  top: 10px;
+	right: 10px;
+	/* changed from 10 -
+		this was causing the background picture to be wider than the screen*/
+  left: 0px;
+	/* then I needed to add this to get hamburger away from edge */
+	padding-left: 10px;
+  
+  z-index: 1;
+  
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle a
+{
+  text-decoration: none;
+  color: #232323;
+  
+  transition: color 0.3s ease;
+}
+
+#menuToggle a:hover
+{
+  color: tomato;
+}
+
+#menuToggle input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  /* position: absolute; */
+	position: absolute;
+  top: -7px;
+  left: -5px;
+
+  cursor: pointer;
+  
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  /* position: relative; */
+	position: relative;
+  
+  /* colour of the actual hamburger menu bars */
+  /* background: #cdcdcd; */
+  background: black;
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  /* colour of menu when clicked and becomes an X - wrong! see below */
+  /* background: #232323; */
+  /* background: black; */
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu
+{
+  /* position: absolute; */
+	position: absolute;
+  width: 275px; /* changed from 300 */
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+	padding-bottom: 20px;;
+	
+	font-family: 'Indie Flower', cursive;
+  
+	/* background colour of menu after hamburger clicked */
+  /* background: #ededed; */
+	background: lightgrey;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+}
+
+/* ----------------------------
+	My own parts
+------------------------------ */
+h1 {
+	font-family: fantasy;
+	margin: 0px;
+	padding: 5% 0px 0px 0px;
+}
+
+h2 {
+  /* color: blue; */
+  /* font-family: 'Boogaloo', cursive; */
+	/* font-family: amatic; */
+	font-family: fantasy;
+	font-size: 2em;
+  margin: 0px;
+  padding: 20px 0px 10px 0px;
+}
+
+.h2section:before,
+.h2section:after {
+ background-color: aliceblue;
+ content: "";
+ display: inline-block;
+ height: 1px;
+ position: relative;
+ vertical-align: middle;
+ width: 15%;
+}
+.h2section:before {
+ right: 0.5em;
+ margin-left: -50%;
+}
+.h2section:after {
+ left: 0.5em;
+ margin-right: -50%;
+}
+
+
+
+
+
+h3 {
+	color: limegreen;
+	margin: 0px;
+	/* font-family: amatic; */
+	/* font-size: 2em; */
+}
+
+img {
+  width: 450px;
+  height: 300px;
+  margin: 10px;
+  /* padding: 15px;
+  transition: all 500ms; */
+  opacity: 1;
+}
+
+/* img:hover {
+  transform: scale(1.05);
+} */
+
+#about {
+  font-size: 4em;
+}
+
+.where {
+	color: aliceblue;
+	font-size: 1.5em;
+	margin: 10px 0px 15px 0px;
+}
+
+.what {
+	color: aliceblue;
+}
+
+.descr {
+	color: aliceblue;
+}
+
+hr {
+  padding-top: 0px;
+  background-color: black;
+  border: 0;
+  width: 50%;
+  height: 1px;
+}
+
+/* ********* */
+/* ABOUT CSS */
+/* ********* */
+.about {
+  /* background-color: lightcyan; */
+	background-color: #86b3d1;
+  opacity: 0.9;
+  /* height: 300px; */
+  color: black;
+  text-align: center;
+	/* padding-top: 5%; */
+  /* font-size: 1.5em; */
+  /* margin-top: 50px; */
+	min-height: 100vh;
+}
+
+.about-text {
+	font-size: 1.5em;
+  /* margin: 50px 100px 10px 100px; */
+	margin: 80px;
+  padding-bottom: 15px;
+}
+
+/* ********** */
+/* SKILLS CSS */
+/* ********** */
+.skill-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* height: 300px; */
+  justify-content: center;
+  padding-bottom: 10px;
+  /* align-items: stretch; */
+}
+
+.skill-icons {
+  width: 60px;
+  height: 60px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+.skills {
+  background-color: #844d36;
+  background-size: 100%;
+  opacity: 0.8;
+  color: aliceblue;
+  text-align: center;
+	padding-bottom: 10px;
+  margin-top: 50px;
+}
+
+.skl {
+  vertical-align: bottom;
+  height: 1em;
+}
+
+.sklstar {
+  vertical-align: bottom;
+  height: 1em;
+}
+
+.skill-col {
+  text-align: right;
+  margin-right: 20px;
+  margin-top: 3px;
+}
+
+.skill-stars {
+  text-align: left;
+  width: 10%;
+  margin-right: 20px;
+  /* border-left: 6px solid red;
+  left: 5%; */
+}
+
+
+/* ************** */
+/* EXPERIENCE CSS */
+/* ************** */
+#xp {
+	color: aliceblue;
+}
+.xp {
+	background-color: #474853;
+	color: black;
+	/* height: 300px; */
+	margin-top: 50px;
+	padding-bottom: 10px;
+	text-align: center;
+	opacity: 0.8;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* width: 100%; */
+	/* height: 300px; */
+	justify-content: center;
+	align-items: stretch;
+}
+
+.left {
+	text-align: right;
+	width:35%
+}
+
+.right {
+	text-align: left;
+	width: 35%;
+}
+
+.middle {
+	text-align: center;
+	width: 10%;
+	/* border-left: 6px solid red;
+	left: 5%; */
+}
+
+.dot {
+  height: 20px;
+  width: 20px;
+  background-color: #32cd32;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.vl {
+	text-align: center;
+	background-image: linear-gradient(#32cd32, #32cd32);
+  background-size: 4px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.xp-text {
+	display: flex;
+	justify-content: center;
+}
+
+
+/* ************ */
+/* PROJECTS CSS */
+/* ************ */
+.projects {
+	/* display: flex;
+  flex-wrap: wrap;
+  justify-content: center; */
+	
+  /* background-color: moccasin; */
+	background-color: #aaa0a0;
+  /* height: 300px; */
+  color: black;
+  text-align: center;
+  /* font-size: 50px; */
+	padding-bottom: 10px;
+  margin-top: 50px;
+  opacity: 1.0;
+}
+
+#projects {
+	color: aliceblue;
+}
+
+.projects-text {
+	line-height: normal;
+}
+
+#proj1, #proj2, #proj3 {
+  line-height: normal;
+  color: black;
+  font-size: 1.25em;
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+
+/* ************* */
+/* contact CSS */
+/* ************* */
+.education {
+  /* background-color: darkgray; */
+	background-color: #8e8268;
+  opacity: 0.8;
+  height: 300px;
+  color: black;
+  text-align: center;
+  /* font-size: 50px; */
+  margin-top: 50px;
+}
+
+/* *********** */
+/* CONTACT CSS */
+/* *********** */
+footer {
+	background-color: #8e8268;
+	opacity: 0.8;
+	color: black;
+	text-align: center;
+	margin-top: 50px;
+}
+
+#contact {
+	color: aliceblue;
+}
+
+#contactInfo {
+	font-size: 1.25em;
+}
+.contact-info {
+	display: flex;
+  flex-wrap: wrap;
+	justify-content: center;
+	padding-bottom: 20px;
+}
+
+.column {
+	margin: 0px 60px 10px 30px;
+	width: 30%;
+}
