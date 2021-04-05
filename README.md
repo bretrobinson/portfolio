@@ -7,3 +7,6 @@ I learned more during my course at EvolveU but
 decided to leave this with just HTML, CSS and JS libraries to
 show my progression of knowledge when looking
 at my other sites/apps.
+
+Added the package.json file so this "static" site
+could be deployed to Heroku.
